@@ -1,0 +1,35 @@
+# ASP.NET Core
+# Build and test ASP.NET Core projects targeting .NET Core.
+# Add steps that run tests, create a NuGet package, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
+
+trigger:
+  branches:
+    include:
+    - master
+
+variables:
+  buildConfiguration: 'Release'
+
+stages:
+  - stage: 'AzureResourceDeployment'
+    jobs:
+    - job: 'AzureResourceDeployment'
+      displayName: 'Azure Resource Deployment'
+      pool:
+        vmImage: 'ubuntu-latest'
+
+      steps:
+      - task: AzureResourceManagerTemplateDeployment@3
+        inputs:
+          deploymentScope: 'Resource Group'
+          azureResourceManagerConnection: 'simple-sinister-sc'
+          subscriptionId: 'efde0cbd-dec4-401a-84ab-e37069bfba2b'
+          action: 'Create Or Update Resource Group'
+          resourceGroupName: 'simple-sinister'
+          location: 'South Central US'
+          templateLocation: 'Linked artifact'
+          csmFile: './arm/template.json'
+          csmParametersFile: './arm/parameters.json'
+          deploymentMode: 'Incremental'
+
