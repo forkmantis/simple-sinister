@@ -51,13 +51,13 @@ stages:
         displayName: 'dotnet build function app'
         inputs:
           command: 'build'
-          projects: **/*.csproj
+          projects: '**/*.csproj'
 
       - task: DotNetCoreCLI@2
         displayName: 'dotnet publish function app'
         inputs:
           command: publish
-          projects: **/*.csproj
+          projects: '**/*.csproj'
           publishWebProjects: false
           zipAfterPublish: true
           arguments: '--configuration $(buildConfiguration) --self-contained --runtime win-x64 --output $(Build.ArtifactStagingDirectory)'
