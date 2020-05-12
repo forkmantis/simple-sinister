@@ -33,3 +33,60 @@ stages:
           csmParametersFile: './arm/parameters.json'
           deploymentMode: 'Incremental'
 
+  - stage: 'Build'
+    jobs:
+    - job: 'Build'
+      pool:
+        vmImage: 'ubuntu-latest'
+
+      steps:
+      - task: UseDotNet@2
+        displayName: 'Use .NET Core 3.1.x'
+        inputs:
+          packageType: sdk
+          version: 3.1.x
+          installationPath: $(Agent.ToolsDirectory)/dotnet
+
+      - task: DotNetCoreCLI@2
+        displayName: 'dotnet build function app'
+        inputs:
+          command: 'build'
+          projects: **/*.csproj
+
+      - task: DotNetCoreCLI@2
+        displayName: 'dotnet publish function app'
+        inputs:
+          command: publish
+          projects: **/*.csproj
+          publishWebProjects: false
+          zipAfterPublish: true
+          arguments: '--configuration $(buildConfiguration) --self-contained --runtime win-x64 --output $(Build.ArtifactStagingDirectory)'
+
+      - task: PublishBuildArtifacts@1
+        displayName: 'Publish Artifact: drop'
+        inputs:
+          PathtoPublish: '$(build.artifactstagingdirectory)'
+          ArtifactName: 'drop'
+          publishLocation: 'Container'
+
+  - stage: 'Deploy'
+    jobs:
+    - deployment: 'Deploy'
+      displayName: 'Deploy Simple Sinister'
+      environment: 'prod'
+      pool:
+        vmImage: 'ubuntu-latest'
+
+      strategy:
+        runOnce:
+          deploy:
+            steps:
+            - task: AzureFunctionApp@1
+              displayName: 'Deploy Simple Sinister'
+              inputs:
+                azureSubscription: 'simple-sinister-sc'
+                appType: functionApp
+                appName: simple-sinister
+                package: $(Agent.BuildDirectory)/drop/*.zip
+                deploymentMethod: runFromPackage
+
