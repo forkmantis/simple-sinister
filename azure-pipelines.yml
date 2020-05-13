@@ -46,6 +46,7 @@ stages:
           packageType: sdk
           version: 3.1.x
           installationPath: $(Agent.ToolsDirectory)/dotnet
+          includePreviewVersions: true
 
       - task: DotNetCoreCLI@2
         displayName: 'dotnet build function app'
@@ -89,4 +90,3 @@ stages:
                 appName: simple-sinister
                 package: $(Agent.BuildDirectory)/drop/*.zip
                 deploymentMethod: runFromPackage
-
