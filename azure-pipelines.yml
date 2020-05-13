@@ -60,7 +60,7 @@ stages:
           projects: '**/*.csproj'
           publishWebProjects: false
           zipAfterPublish: true
-          arguments: '--configuration $(buildConfiguration) --self-contained --runtime win-x64 --output $(Build.ArtifactStagingDirectory)'
+          arguments: '--configuration $(buildConfiguration) --self-contained --output $(Build.ArtifactStagingDirectory)'
 
       - task: PublishBuildArtifacts@1
         displayName: 'Publish Artifact: drop'
