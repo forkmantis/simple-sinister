@@ -1,0 +1,34 @@
+{
+    "date": "2020-04-23",
+    "swings": {
+        "workPerformed": [
+            {
+                "weight": "45",
+                "sets": "2",
+                "reps": "10"
+            },
+            {
+                "weight": "53",
+                "sets": "2",
+                "reps": "10"
+            }
+        ],
+        "handedness": "LR",
+        "workCapacity": "4660"
+    },
+    "getups": {
+        "workPerformed": [
+            {
+                "weight": "45",
+                "sets": "8",
+                "reps": "1"
+            },
+            {
+                "weight": "53",
+                "sets": "2",
+                "reps": "1"
+            }
+        ],
+        "workCapacity": "466"
+   }
+}
