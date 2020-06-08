@@ -15,7 +15,8 @@ namespace simple.tests
             string foo = "2020-05-03 wod: Pavel Timeless Simple LR 10x10 @ 45#;";
 
             var expected = new PracticeSession() {
-                Date = DateTime.Parse("2020-05-03")
+                Date = DateTime.Parse("2020-05-03"),
+                Title = "Pavel Timeless Simple"
             };
 
             // Act
