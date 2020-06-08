@@ -6,5 +6,7 @@ namespace simple.models
     {
         public DateTime Date { get; set; }
         public string Title { get; set; }
+        public PracticeExercise Swings { get; set; }
+        public PracticeExercise GetUps { get; set; }
     }
 }
