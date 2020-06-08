@@ -88,5 +88,5 @@ stages:
                 azureSubscription: 'simple-sinister-sc'
                 appType: functionApp
                 appName: simple-sinister
-                package: $(Agent.BuildDirectory)/drop/*.zip
+                package: $(Agent.BuildDirectory)/drop/simple.zip
                 deploymentMethod: runFromPackage
