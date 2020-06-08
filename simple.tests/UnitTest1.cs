@@ -10,16 +10,19 @@ namespace simple.tests
         [Fact]
         public void Test1()
         {
+            // Arrange
             var parser = new Parser();
             string foo = "2020-05-03 wod: Pavel Timeless Simple LR 10x10 @ 45#;";
 
             var expected = new PracticeSession() {
-                Date = DateTime.Parse("2020-06-12")
+                Date = DateTime.Parse("2020-05-03")
             };
 
+            // Act
             var output = parser.Parse(foo);
 
-            Assert.Equal(expected.Date, output.Date);
+            // Assert
+            output.Should().BeEquivalentTo(expected);
         }
     }
 }
