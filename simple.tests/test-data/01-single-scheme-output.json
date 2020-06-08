@@ -1,6 +1,7 @@
 {
     "date": "2020-04-23",
     "title": "Pavel Timeless Simple",
+    "handedness": "LR",
     "swings": {
         "workPerformed": [
             {
@@ -9,7 +10,6 @@
                 "reps": "10"
             }
         ],
-        "handedness": "LR",
         "workCapacity": "4500"
     },
     "getups": {
