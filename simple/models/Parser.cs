@@ -13,10 +13,7 @@ namespace simple.models
             var date = match.Groups[1].Value;
             var title = match.Groups[2].Value;
 
-            var practiceSession = new PracticeSession() {
-                Date = DateTime.Parse(date),
-                Title = title
-            };
+            var practiceSession = new PracticeSession(DateTime.Parse(date), title);
 
             return practiceSession;
         }

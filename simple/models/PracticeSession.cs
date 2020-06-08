@@ -4,9 +4,17 @@ namespace simple.models
 {
     public class PracticeSession
     {
-        public DateTime Date { get; set; }
-        public string Title { get; set; }
-        public PracticeExercise Swings { get; set; }
-        public PracticeExercise GetUps { get; set; }
+        public DateTime Date { get; private set; }
+        public string Title { get; private set; }
+        public PracticeExercise Swings { get; private set; }
+        public PracticeExercise GetUps { get; private set; }
+
+        public PracticeSession(DateTime date, string title)
+        {
+            Date = date;
+            Title = title;
+            Swings = new PracticeExercise();
+            GetUps = new PracticeExercise();
+        }
     }
 }
