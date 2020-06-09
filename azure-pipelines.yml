@@ -55,12 +55,6 @@ stages:
           projects: '**/*.csproj'
 
       - task: DotNetCoreCLI@2
-        displayName: 'dotnet test function app'
-        inputs:
-          command: 'test'
-          projects: '**/sinsiter.test.csproj'
-
-      - task: DotNetCoreCLI@2
         displayName: 'dotnet publish function app'
         inputs:
           command: publish
@@ -75,6 +69,18 @@ stages:
           PathtoPublish: '$(build.artifactstagingdirectory)'
           ArtifactName: 'drop'
           publishLocation: 'Container'
+
+  - stage: 'Test'
+    jobs:
+    - job: 'Test'
+      pool:
+        vmImage: 'ubuntu-latest'
+
+      - task: DotNetCoreCLI@2
+        displayName: 'dotnet test function app'
+        inputs:
+          command: 'test'
+          projects: '**/sinsiter.test.csproj'
 
   - stage: 'Deploy'
     jobs:
