@@ -76,6 +76,7 @@ stages:
       pool:
         vmImage: 'ubuntu-latest'
 
+      steps:
       - task: DotNetCoreCLI@2
         displayName: 'dotnet test function app'
         inputs:
