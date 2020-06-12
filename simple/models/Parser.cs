@@ -20,11 +20,13 @@ namespace simple.models
             Match innerMatch = innerRegex.Match(workingSets);
             
             var sets = Int32.Parse(innerMatch.Groups[1].Value);
-            var reps = Int32.Parse(innerMatch.Groups[2].Value);
+            var swingReps = Int32.Parse(innerMatch.Groups[2].Value);
+            var getUpReps = swingReps / 10;
             var weight = Int32.Parse(innerMatch.Groups[3].Value);
 
             var practiceSession = new PracticeSession(DateTime.Parse(date), title, handedness, notes);
-            practiceSession.Swings.WorkPerformed.Add(new WorkPerformed(sets, reps, weight));
+            practiceSession.Swings.WorkPerformed.Add(new WorkPerformed(sets, swingReps, weight));
+            practiceSession.GetUps.WorkPerformed.Add(new WorkPerformed(sets, getUpReps, weight));
 
             return practiceSession;
         }

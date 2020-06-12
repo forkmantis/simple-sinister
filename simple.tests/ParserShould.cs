@@ -18,6 +18,7 @@ namespace simple.tests
 
             var expected = new PracticeSession(DateTime.Parse("2020-05-03"), "Pavel Timeless Simple", "LR", String.Empty);
             expected.Swings.WorkPerformed.Add(new WorkPerformed(10, 10, 45));
+            expected.GetUps.WorkPerformed.Add(new WorkPerformed(10, 1, 45));
 
             // Act
             var output = parser.Parse(input);
@@ -35,6 +36,7 @@ namespace simple.tests
 
             var expected = new PracticeSession(DateTime.Parse("2020-05-04"), "Pavel Timeless Simple", "T", "I didn't get much sleep the night before");
             expected.Swings.WorkPerformed.Add(new WorkPerformed(10, 10, 53));
+            expected.GetUps.WorkPerformed.Add(new WorkPerformed(10, 1, 53));
 
             // Act
             var output = parser.Parse(input);
