@@ -14,8 +14,8 @@ namespace simple.tests
         {
             // Arrange
             var practiceExercise = new PracticeExercise();
-            var workPerformed = new WorkPerformed(sets, reps, weight); 
- 
+            var workPerformed = new WorkPerformed() { Sets = sets, Reps = reps, Weight = weight}; 
+
             // Act
             practiceExercise.WorkPerformed.Add(workPerformed);
 
@@ -30,8 +30,8 @@ namespace simple.tests
             var practiceExercise = new PracticeExercise();
  
             // Act
-            practiceExercise.WorkPerformed.Add(new WorkPerformed(2, 10, 53));
-            practiceExercise.WorkPerformed.Add(new WorkPerformed(8, 10, 35));
+            practiceExercise.WorkPerformed.Add(new WorkPerformed() { Sets = 2, Reps = 10, Weight = 53});
+            practiceExercise.WorkPerformed.Add(new WorkPerformed() { Sets = 8, Reps = 10, Weight = 35});
 
             // Assert
             practiceExercise.WorkCapacity.Should().Be(3860);

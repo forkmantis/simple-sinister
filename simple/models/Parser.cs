@@ -24,9 +24,14 @@ namespace simple.models
             var getUpReps = swingReps / 10;
             var weight = Int32.Parse(innerMatch.Groups[3].Value);
 
-            var practiceSession = new PracticeSession(DateTime.Parse(date), title, handedness, notes);
-            practiceSession.Swings.WorkPerformed.Add(new WorkPerformed(sets, swingReps, weight));
-            practiceSession.GetUps.WorkPerformed.Add(new WorkPerformed(sets, getUpReps, weight));
+            var practiceSession = new PracticeSession() {
+                Date = DateTime.Parse(date), 
+                Title = title, 
+                Handedness = handedness, 
+                Notes = notes
+            };
+            practiceSession.Swings.WorkPerformed.Add(new WorkPerformed() { Sets = sets, Reps = swingReps, Weight = weight});
+            practiceSession.GetUps.WorkPerformed.Add(new WorkPerformed() { Sets = sets, Reps = getUpReps, Weight = weight});
 
             return practiceSession;
         }
