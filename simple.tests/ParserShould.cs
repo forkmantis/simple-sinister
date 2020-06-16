@@ -1,7 +1,7 @@
+using FluentAssertions;
 using System;
 using Xunit;
 using simple.models;
-using FluentAssertions;
 
 namespace simple.tests
 {
