@@ -44,5 +44,22 @@ namespace simple.tests
             // Assert
             output.Should().BeEquivalentTo(expected);
         }
+
+        [Theory]
+        [InlineData("2020-05-04 wod: Pavel Timeless Simple LR 8x10 @ 45#, 2x10 @ 53#;")]
+        public void Parse_Valid_Double_Set(string input)
+        {
+            // Arrange
+            var parser = new Parser();
+            PracticeSession expected = JsonConvert.DeserializeObject<PracticeSession>(
+                File.ReadAllText("test-data/02-double-scheme-output.json")
+            );
+
+            // Act
+            var output = parser.Parse(input);
+
+            // Assert
+            output.Should().BeEquivalentTo(expected);
+        }
     }
 }

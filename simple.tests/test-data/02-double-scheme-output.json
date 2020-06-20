@@ -1,35 +1,35 @@
 {
-    "date": "2020-04-23",
-    "title": "Pavel Timeless Simple",
-    "handedness": "LR",
-    "swings": {
-        "workPerformed": [
+    "Date": "2020-05-04",
+    "Title": "Pavel Timeless Simple",
+    "Handedness": "LR",
+    "Swings": {
+        "WorkPerformed": [
             {
-                "weight": "45",
-                "sets": "2",
-                "reps": "10"
+                "Weight": "45",
+                "Sets": "8",
+                "Reps": "10"
             },
             {
-                "weight": "53",
-                "sets": "2",
-                "reps": "10"
+                "Weight": "53",
+                "Sets": "2",
+                "Reps": "10"
             }
         ],
-        "workCapacity": "4660"
+        "WorkCapacity": "4660"
     },
-    "getups": {
-        "workPerformed": [
+    "GetUps": {
+        "WorkPerformed": [
             {
-                "weight": "45",
-                "sets": "8",
-                "reps": "1"
+                "Weight": "45",
+                "Sets": "8",
+                "Reps": "1"
             },
             {
-                "weight": "53",
-                "sets": "2",
-                "reps": "1"
+                "Weight": "53",
+                "Sets": "2",
+                "Reps": "1"
             }
         ],
-        "workCapacity": "466"
+        "WorkCapacity": "466"
    }
 }
