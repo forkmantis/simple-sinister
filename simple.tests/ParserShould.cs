@@ -10,9 +10,9 @@ namespace simple.tests
     public class ParserShould
     {
         [Theory]
-        [InlineData("2020-05-03 wod: Pavel Timeless Simple LR 10x10 @ 45#;")]
-        [InlineData("2020-05-03 wod: Pavel Timeless Simple LR 10 x 10 @ 45#;")]
-        [InlineData("2020-05-03 wod: Pavel Timeless Simple LR 10x10@45#;")]
+        [InlineData("x 2020-05-03 wod: Pavel Timeless Simple LR 10x10 @ 45#;")]
+        [InlineData("x 2020-05-03 wod: Pavel Timeless Simple LR 10 x 10 @ 45#;")]
+        [InlineData("x 2020-05-03 wod: Pavel Timeless Simple LR 10x10@45#;")]
         public void Parse_Valid_Single_Set_Without_Notes(string input)
         {
             // Arrange
@@ -29,7 +29,7 @@ namespace simple.tests
         }
 
         [Theory]
-        [InlineData("2020-05-04 wod: Pavel Timeless Simple T 10x10 @ 53#; notes: I didn't get much sleep the night before;")]
+        [InlineData("x 2020-05-04 wod: Pavel Timeless Simple T 10x10 @ 53#; notes: I didn't get much sleep the night before;")]
         public void Parse_Valid_Single_Set_With_Notes(string input)
         {
             // Arrange
@@ -46,7 +46,7 @@ namespace simple.tests
         }
 
         [Theory]
-        [InlineData("2020-05-04 wod: Pavel Timeless Simple LR 8x10 @ 45#, 2x10 @ 53#;")]
+        [InlineData("x 2020-05-04 wod: Pavel Timeless Simple LR 8x10 @ 45#, 2x10 @ 53#;")]
         public void Parse_Valid_Double_Set(string input)
         {
             // Arrange
