@@ -1,0 +1,35 @@
+{
+    "date": "2020-06-19",
+    "title": "Pavel Timeless Simple",
+    "handedness": "T",
+    "swings": {
+        "workPerformed": [
+            {
+                "weight": "10",
+                "sets": "6",
+                "reps": "10"
+            },
+            {
+                "weight": "25",
+                "sets": "4",
+                "reps": "10"
+            }
+        ],
+        "workCapacity": "1600"
+    },
+    "getups": {
+        "workPerformed": [
+            {
+                "weight": "10",
+                "sets": "6",
+                "reps": "1"
+            },
+            {
+                "weight": "25",
+                "sets": "4",
+                "reps": "1"
+            }
+        ],
+        "workCapacity": "160"
+   }
+}

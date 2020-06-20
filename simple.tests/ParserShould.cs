@@ -61,5 +61,23 @@ namespace simple.tests
             // Assert
             output.Should().BeEquivalentTo(expected);
         }
+
+        [Theory]
+        [InlineData("x 2020-06-19 wod: Pavel Timeless Simple T 6 @ 10#, 4 @ 25#;")]
+        [InlineData("x 2020-06-19 wod: Pavel Timeless Simple T 6@10#, 4@25#;")]
+        public void Parse_Valid_Simple_Double_Set(string input)
+        {
+            // Arrange
+            var parser = new Parser();
+            PracticeSession expected = JsonConvert.DeserializeObject<PracticeSession>(
+                File.ReadAllText("test-data/04-simple-format-output.json")
+            );
+
+            // Act
+            var output = parser.Parse(input);
+
+            // Assert
+            output.Should().BeEquivalentTo(expected);
+        }
     }
 }

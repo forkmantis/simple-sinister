@@ -25,11 +25,11 @@ namespace simple.models
 
             foreach (string workingSet in workingSets.Split(','))
             {
-                Regex innerRegex = new Regex(@" *([0-9]{1,2}) *x *([0-9]{1,2}) *@ *([0-9]{1,3})");
+                Regex innerRegex = new Regex(@" *([0-9]{1,2}) *x? *([0-9]{0,2}) *@ *([0-9]{1,3})");
                 Match innerMatch = innerRegex.Match(workingSet);
 
                 var sets = Int32.Parse(innerMatch.Groups[1].Value);
-                var swingReps = Int32.Parse(innerMatch.Groups[2].Value);
+                var swingReps = innerMatch.Groups[2].Value == string.Empty ? 10 : Int32.Parse(innerMatch.Groups[2].Value);
                 var getUpReps = swingReps / 10;
                 var weight = Int32.Parse(innerMatch.Groups[3].Value);
 
