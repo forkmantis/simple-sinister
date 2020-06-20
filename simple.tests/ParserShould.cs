@@ -1,5 +1,6 @@
 using FluentAssertions;
 using Newtonsoft.Json;
+using System.IO;
 using System;
 using Xunit;
 using simple.models;
@@ -16,16 +17,9 @@ namespace simple.tests
         {
             // Arrange
             var parser = new Parser();
-
-            var expected = new PracticeSession() {
-                Date = DateTime.Parse("2020-05-03"), 
-                Title = "Pavel Timeless Simple", 
-                Handedness = "LR"
-            };
-            expected.Swings.WorkPerformed.Add(new WorkPerformed() {Sets = 10, Reps = 10, Weight = 45});
-            expected.GetUps.WorkPerformed.Add(new WorkPerformed() {Sets = 10, Reps = 1, Weight = 45});
-
-            Console.WriteLine(JsonConvert.SerializeObject(expected, Formatting.Indented));
+            PracticeSession expected = JsonConvert.DeserializeObject<PracticeSession>(
+                File.ReadAllText("test-data/01-single-scheme-output.json")
+            );
 
             // Act
             var output = parser.Parse(input);
@@ -40,15 +34,9 @@ namespace simple.tests
         {
             // Arrange
             var parser = new Parser();
-
-            var expected = new PracticeSession() {
-                Date = DateTime.Parse("2020-05-04"), 
-                Title = "Pavel Timeless Simple", 
-                Handedness = "T",
-                Notes =  "I didn't get much sleep the night before"
-            };
-            expected.Swings.WorkPerformed.Add(new WorkPerformed() {Sets = 10, Reps = 10, Weight = 53});
-            expected.GetUps.WorkPerformed.Add(new WorkPerformed() {Sets = 10, Reps = 1, Weight = 53});
+            PracticeSession expected = JsonConvert.DeserializeObject<PracticeSession>(
+                File.ReadAllText("test-data/03-single-scheme-with-notes-output.json")
+            );
 
             // Act
             var output = parser.Parse(input);
